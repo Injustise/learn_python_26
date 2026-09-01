@@ -1,0 +1,1 @@
+- [rich]：https://github.com/textualize/rich/blob/main/README.cn.md
