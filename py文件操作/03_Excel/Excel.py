@@ -1,9 +1,7 @@
+# 读 Excel -------------------------
 import datetime
 import openpyxl
 
-
-
-# 读 Excel -------------------------
 wb = openpyxl.load_workbook('D://code_py//learn_9-1//py文件操作//03_Excel//2022年股票数据.xlsx')
 # 获取工作表的名字
 print(wb.sheetnames)
@@ -121,6 +119,7 @@ chart.y_axis.title = '销量'
 chart.x_axis.delete = False # 显示 x 轴
 chart.y_axis.delete = False # 显示 y 轴
 
+# Reference 创建一个指向 Excel 工作表中特定单元格区域的引用，作为后续创建图表时所需的数据源
 data = Reference(sheet, min_col = 2, min_row = 1, max_row = 5, max_col = 3) # 数据：(1,2) -> (5,3)
 cats = Reference(sheet, min_col=1, min_row=2, max_row=5, max_col = 1) # 类别：(1,2) -> (1,5)
 
