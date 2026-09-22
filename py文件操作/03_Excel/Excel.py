@@ -2,12 +2,13 @@
 import datetime
 import openpyxl
 
+# 打开一个 excel 工作簿对象
 wb = openpyxl.load_workbook('D://code_py//learn_9-1//py文件操作//03_Excel//2022年股票数据.xlsx')
-# 获取工作表的名字
+# 获取所有工作表的名字
 print(wb.sheetnames)
-# 获取工作表
+# 获取指定工作表（列表）
 sheet = wb.worksheets[0]
-# 获得该工作表的单元格的范围
+# 获得该工作表的单元格的范围（dimension：尺寸；范围；维）
 print(sheet.dimensions)
 # 获得该工作表的行数和列数
 print(sheet.max_row, sheet.max_column)
@@ -17,13 +18,13 @@ print(sheet.cell(3,3).value)
 print(sheet['C3'].value)
 
 # 获取多个单元格（嵌套元组）
-print(sheet['A2:C5'])
+print(sheet['A2:C5']) # 左上角：右下角
 
 # 读取所有单元格的数据
-for row in range(2, sheet.max_row + 1):
+for row in range(2, sheet.max_row + 1): # 第一行通常是标题
     for col in 'ABCDEF':
         value = sheet[f'{col}{row}'].value
-        if type(value) == datetime.datetime:
+        if type(value) == datetime.datetime: # 单元格格式为日期
             print(value.strftime('%Y年%m月%d日'), end = '\t')
         elif type(value) == int:
             print(f'{value:>10d}', end = '\t')
@@ -46,7 +47,7 @@ sheet = wb.active
 sheet.title = '期末成绩'
 
 titles = ('姓名', '语文', '数学', '英语')
-for col, title in enumerate(titles):
+for col, title in enumerate(titles): # enumerate 可以把可迭代对象变成一个“索引-值对”的迭代器
     sheet.cell(1, col + 1, title)
 names = ('关羽', '张飞', '赵云', '马超', '黄忠')
 for row, name in enumerate(names):
