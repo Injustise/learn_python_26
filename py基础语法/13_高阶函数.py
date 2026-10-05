@@ -1,6 +1,8 @@
 import functools
 import operator
 
+# *args 打包多余的位置参数，收集到收集到一个元组中。
+# **kwargs：打包多余的关键字参数，收集到一个字典中。
 def calc(init_value, func, *args, **kwargs):
     nums = list(args) + list(kwargs.values())
     result = init_value
